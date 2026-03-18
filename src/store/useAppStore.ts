@@ -51,7 +51,7 @@ function createAppStore(profileId: ProfileId) {
         setActiveTab: (tab) => set({ activeTab: tab }),
 
         // Training
-        currentPhase: 'phase_6',
+        currentPhase: 'phase_1',
         setCurrentPhase: (phase) => set({ currentPhase: phase }),
         currentDay: 0,
         setCurrentDay: (day) => set({ currentDay: day }),
