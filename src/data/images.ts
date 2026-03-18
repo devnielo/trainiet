@@ -34,6 +34,21 @@ export const exerciseImages: Record<string, string> = {
   rdl: ex('1566241142559-40e1dab266c6'),
   bulgarian: ex('1566241142559-40e1dab266c6'),
   seated_calf: ex('1534438327276-14e5300c3a48'),
+  goblet_squat: ex('1566241142559-40e1dab266c6'),
+  plank: ex('1571019614242-c5c5dee9f50b'),
+  hip_abduction: ex('1534438327276-14e5300c3a48'),
+  glute_bridge: ex('1571019614242-c5c5dee9f50b'),
+  step_up: ex('1566241142559-40e1dab266c6'),
+  walking_lunge: ex('1566241142559-40e1dab266c6'),
+  cable_kickback: ex('1534438327276-14e5300c3a48'),
+  flat_db_press: ex('1581009146145-b5ef050c2e1e'),
+  flat_db_fly: ex('1571019614242-c5c5dee9f50b'),
+  db_pullover: ex('1534438327276-14e5300c3a48'),
+  single_leg_hip: ex('1571019614242-c5c5dee9f50b'),
+  sumo_deadlift: ex('1566241142559-40e1dab266c6'),
+  high_leg_press: ex('1534438327276-14e5300c3a48'),
+  incline_abduction: ex('1534438327276-14e5300c3a48'),
+  triceps_pushdown: ex('1581009146145-b5ef050c2e1e'),
 }
 
 // Food images - using verified Unsplash URLs
@@ -81,4 +96,11 @@ export const foodImages: Record<string, string> = {
   kale_chips: fd('1512621776951-a57141f2eefd'), // greens
   jamon_roll: fd('1504674900247-0877df9cc836'), // meat
   tofu_stir: fd('1512058564366-18510be2db19'), // stir fry
+  hummus_toast: fd('1525351484163-7529414344d8'), // hummus on toast
+  babaganoush: fd('1562967916145-f0759e8f4e24'), // baba ganoush dip
+  boniato_chips: fd('1574071318508-1cdbab80d002'), // sweet potato chips
+  falafel: fd('1593001872117-c5d8a0600421'), // falafel plate
+  gambas_ajillo: fd('1551218808455-50f76d0fa7c1'), // garlic shrimp
+  mejillones: fd('1559847844370-93e4cf2e2f2a'), // mussels
+  pork_loin: fd('1432139555190-5e68f2e27a35'), // pork tenderloin
 }

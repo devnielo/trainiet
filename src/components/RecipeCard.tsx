@@ -133,7 +133,7 @@ export function RecipeCard({ recipe, isSelected, onToggle, size = 'normal' }: Pr
         </div>
       </motion.div>
 
-      {/* ═══ Detail Modal ═══ */}
+      {/* ═══ Detail Modal — horizontal on desktop ═══ */}
       <AnimatePresence>
         {showDetail && (
           <motion.div
@@ -141,7 +141,7 @@ export function RecipeCard({ recipe, isSelected, onToggle, size = 'normal' }: Pr
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.15 }}
-            className="fixed inset-0 z-[200] bg-black/70 backdrop-blur-sm flex items-end md:items-center justify-center p-0 md:p-6"
+            className="fixed inset-0 z-[200] bg-black/70 backdrop-blur-sm flex items-end lg:items-center justify-center p-0 lg:p-8"
             onClick={() => setShowDetail(false)}
           >
             <motion.div
@@ -149,39 +149,53 @@ export function RecipeCard({ recipe, isSelected, onToggle, size = 'normal' }: Pr
               animate={{ y: 0, opacity: 1 }}
               exit={{ y: 60, opacity: 0 }}
               transition={{ type: 'spring', damping: 25, stiffness: 300 }}
-              className="w-full max-w-lg bg-surface-1 rounded-t-2xl md:rounded-2xl border border-border-custom overflow-hidden max-h-[90dvh] flex flex-col"
+              className="w-full max-w-[900px] bg-surface-1 rounded-t-2xl lg:rounded-2xl border border-border-custom overflow-hidden max-h-[90dvh] flex flex-col lg:flex-row"
               onClick={(e) => e.stopPropagation()}
             >
-              {/* Hero image */}
-              <div className="relative aspect-[16/9] shrink-0">
-                {hasImage ? (
-                  <img src={imgSrc} alt={recipe.name} className="w-full h-full object-cover" />
-                ) : (
-                  <div className={`w-full h-full bg-gradient-to-br ${gradientFallback}`} />
-                )}
-                <div className="absolute inset-0 bg-gradient-to-t from-surface-1 via-transparent to-transparent" />
+              {/* Image panel — top on mobile, left on desktop */}
+              <div className="relative lg:w-[380px] xl:w-[420px] shrink-0">
+                <div className="relative aspect-[16/9] lg:aspect-auto lg:h-full lg:min-h-[500px]">
+                  {hasImage ? (
+                    <img src={imgSrc?.replace('w=400&h=400', 'w=800&h=800')} alt={recipe.name} className="absolute inset-0 w-full h-full object-cover" />
+                  ) : (
+                    <div className={`absolute inset-0 bg-gradient-to-br ${gradientFallback}`}>
+                      <div className="flex items-center justify-center h-full">
+                        <Drumstick size={48} className="text-text-muted/20" />
+                      </div>
+                    </div>
+                  )}
+                  {/* Gradient — bottom on mobile, right on desktop */}
+                  <div className="absolute inset-0 bg-gradient-to-t lg:bg-gradient-to-r from-surface-1 via-transparent to-transparent" />
 
-                {/* Close button */}
-                <button
-                  onClick={() => setShowDetail(false)}
-                  className="absolute top-3 right-3 w-9 h-9 rounded-full bg-black/50 backdrop-blur-sm flex items-center justify-center text-white hover:bg-black/70 transition-colors cursor-pointer"
-                  aria-label="Cerrar"
-                >
-                  <X size={18} />
-                </button>
+                  {/* Close button */}
+                  <button
+                    onClick={() => setShowDetail(false)}
+                    className="absolute top-3 right-3 lg:top-4 lg:left-4 lg:right-auto w-9 h-9 rounded-full bg-black/50 backdrop-blur-sm flex items-center justify-center text-white hover:bg-black/70 transition-colors cursor-pointer"
+                    aria-label="Cerrar"
+                  >
+                    <X size={18} />
+                  </button>
 
-                {/* Title on image */}
-                <div className="absolute bottom-4 left-5 right-5">
-                  <h2 className="font-display text-2xl md:text-3xl font-bold text-white uppercase tracking-tight leading-tight">
-                    {recipe.name}
-                  </h2>
+                  {/* Title on image — mobile only */}
+                  <div className="absolute bottom-4 left-5 right-5 lg:hidden">
+                    <h2 className="font-display text-2xl font-bold text-white uppercase tracking-tight leading-tight">
+                      {recipe.name}
+                    </h2>
+                  </div>
                 </div>
               </div>
 
-              {/* Content */}
-              <div className="flex-1 overflow-y-auto px-5 pb-5">
+              {/* Content panel — right on desktop */}
+              <div className="flex-1 overflow-y-auto px-5 lg:px-6 xl:px-8 pb-5 lg:py-6">
+                {/* Title — desktop only */}
+                <div className="hidden lg:block mb-4">
+                  <h2 className="font-display text-2xl xl:text-3xl font-bold uppercase tracking-tight leading-tight">
+                    {recipe.name}
+                  </h2>
+                </div>
+
                 {/* Meta row */}
-                <div className="flex items-center gap-3 py-4 text-sm text-text-dim border-b border-border-custom/50">
+                <div className="flex items-center gap-3 py-3 lg:py-0 lg:mb-4 text-sm text-text-dim border-b lg:border-b-0 border-border-custom/50">
                   <span className="flex items-center gap-1.5">
                     <Clock size={14} className="text-text-muted" /> {recipe.prepTime} min
                   </span>
@@ -194,7 +208,7 @@ export function RecipeCard({ recipe, isSelected, onToggle, size = 'normal' }: Pr
                 </div>
 
                 {/* Macros bar */}
-                <div className="grid grid-cols-4 gap-2 py-4 border-b border-border-custom/50">
+                <div className="grid grid-cols-4 gap-2 py-4 lg:py-3 border-b border-border-custom/50 lg:bg-surface-2/30 lg:rounded-xl lg:px-3 lg:mb-4">
                   <div className="text-center">
                     <div className="text-lg font-bold text-push">{recipe.kcal}</div>
                     <div className="text-[10px] font-mono text-text-muted uppercase">kcal</div>
@@ -214,9 +228,9 @@ export function RecipeCard({ recipe, isSelected, onToggle, size = 'normal' }: Pr
                 </div>
 
                 {/* Ingredients */}
-                <div className="py-4 border-b border-border-custom/50">
+                <div className="py-4 lg:py-3 border-b border-border-custom/50">
                   <h4 className="font-display text-sm font-semibold uppercase tracking-wide mb-3">Ingredientes</h4>
-                  <div className="grid grid-cols-1 gap-1.5">
+                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-1.5">
                     {recipe.ingredients.split('·').map((ing, i) => (
                       <div key={i} className="flex items-start gap-2 text-sm text-text-dim">
                         <span className="w-1.5 h-1.5 rounded-full bg-accent-green/50 mt-2 shrink-0" />
@@ -227,7 +241,7 @@ export function RecipeCard({ recipe, isSelected, onToggle, size = 'normal' }: Pr
                 </div>
 
                 {/* Steps */}
-                <div className="py-4">
+                <div className="py-4 lg:py-3">
                   <h4 className="font-display text-sm font-semibold uppercase tracking-wide mb-3">Preparacion</h4>
                   <p className="text-sm text-text-dim leading-relaxed">{recipe.steps}</p>
                 </div>

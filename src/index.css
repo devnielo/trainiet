@@ -32,6 +32,13 @@
   --font-display: 'Barlow Condensed', sans-serif;
 }
 
+/* ═══ Eva's pink theme override ═══ */
+[data-profile="eva"] {
+  --color-accent-green: #f472b6;
+  --color-accent-green-dark: #ec4899;
+  --color-accent-green-bg: rgba(244, 114, 182, 0.08);
+}
+
 ::-webkit-scrollbar {
   display: none;
 }

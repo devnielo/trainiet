@@ -1,5 +1,98 @@
 import type { Phase } from './types'
 
+// ═══════════════════════════════════════════════════════════════
+// Eva — Phase progression
+// Starts lower (Full Body 3x), emphasizes glute/leg volume
+// Wernbom 2007, Fonseca 2014, Judge & Burke 2010, Vikmoen 2020
+// ═══════════════════════════════════════════════════════════════
+
+export const evaPhases: Phase[] = [
+  {
+    id: 'eva_phase_1',
+    name: 'Adaptacion',
+    level: 1,
+    weeks: [1, 8],
+    daysPerWeek: 3,
+    splitType: 'Full Body 3x',
+    focus: 'Tecnica + patron gluteo + conexion neuromuscular',
+    rirRange: [2, 3],
+    deloadWeeks: [4],
+    nextPhase: 'eva_phase_2',
+    evidenceSummary: 'Schoenfeld 2016 -- frecuencia 3x superior para principiantes; Vikmoen 2020 -- mujeres toleran mayor frecuencia',
+    description: 'Aprende patrones de movimiento con enfasis en gluteo y pierna. Descansos cortos 60-90s. Volumen moderado para adaptacion.',
+  },
+  {
+    id: 'eva_phase_2',
+    name: 'Fuerza Base',
+    level: 2,
+    weeks: [9, 16],
+    daysPerWeek: 3,
+    splitType: 'Full Body 3x',
+    focus: 'Compuestos mas pesados + progresion lineal',
+    rirRange: [2, 3],
+    deloadWeeks: [12, 16],
+    nextPhase: 'eva_phase_3',
+    evidenceSummary: 'Ralston 2017 -- fuerza base necesaria; Judge & Burke 2010 -- descansos 60-90s en mujeres',
+    description: 'Misma estructura Full Body pero con cargas progresivas. +2.5kg/semana en compuestos. Preparacion para split.',
+  },
+  {
+    id: 'eva_phase_3',
+    name: 'Hipertrofia',
+    level: 3,
+    weeks: [17, 24],
+    daysPerWeek: 4,
+    splitType: 'Upper/Lower 4x',
+    focus: 'Doble frecuencia + volumen gluteo 15-20 sets/semana',
+    rirRange: [1, 2],
+    deloadWeeks: [20, 24],
+    nextPhase: 'eva_phase_4',
+    evidenceSummary: 'Wernbom 2007 -- 15-20 sets optimo gluteo; Schoenfeld 2015 -- 2x/semana > 1x',
+    description: 'Saltas a 4 dias Upper/Lower. Dos dias de pierna con enfasis gluteo. Se introducen ejercicios de estiramiento.',
+  },
+  {
+    id: 'eva_phase_4',
+    name: 'Hipertrofia Vol',
+    level: 4,
+    weeks: [25, 32],
+    daysPerWeek: 4,
+    splitType: 'Upper/Lower 4x',
+    focus: 'Volumen progresivo + tecnicas estiramiento',
+    rirRange: [1, 2],
+    deloadWeeks: [28, 32],
+    nextPhase: 'eva_phase_5',
+    evidenceSummary: 'Fonseca 2014 -- respuesta dosis-volumen en pierna; Maeo 2021/2023 -- stretch-mediated hypertrophy',
+    description: 'Mismo split pero mas volumen total. Enfasis en ejercicios de estiramiento (curl sentado, aperturas, pullover).',
+  },
+  {
+    id: 'eva_phase_5',
+    name: 'Avanzada',
+    level: 5,
+    weeks: [33, 40],
+    daysPerWeek: 5,
+    splitType: 'PPL Hibrido',
+    focus: 'Transicion a PPL + especializacion',
+    rirRange: [1, 2],
+    deloadWeeks: [36, 40],
+    nextPhase: 'eva_phase_6',
+    evidenceSummary: 'Maeo 2021/2023 -- stretch-mediated; Burke 2024 -- ejercicios especificos por musculo',
+    description: 'Push/Pull/Legs hibrido. Programa compartido con Danielo para fase avanzada.',
+  },
+  {
+    id: 'eva_phase_6',
+    name: 'Especializacion',
+    level: 6,
+    weeks: [41, 52],
+    daysPerWeek: 6,
+    splitType: 'PPL x 2',
+    focus: 'Maximo volumen tolerable',
+    rirRange: [1, 3],
+    deloadWeeks: [44, 48, 52],
+    nextPhase: null,
+    evidenceSummary: 'Burke 2024, Kobayashi 2024, Kassiano 2025, Wolf 2025',
+    description: 'PPL completo x 2. Maxima especializacion con ejercicios elegidos por evidencia.',
+  },
+]
+
 export const phases: Phase[] = [
   {
     id: 'phase_1',

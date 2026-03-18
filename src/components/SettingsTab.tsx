@@ -1,6 +1,8 @@
 import { useAppStore } from '@/store/useAppStore'
+import { useProfileStore, getProfile } from '@/store/useProfileStore'
+import { ProfileSelector } from '@/components/ProfileSwitcher'
 import type { Allergen } from '@/data/types'
-import { Shield, AlertTriangle } from 'lucide-react'
+import { Shield, AlertTriangle, User } from 'lucide-react'
 
 const allergenOptions: { value: Allergen; label: string; emoji: string }[] = [
   { value: 'lactosa', label: 'Sin lactosa', emoji: '🥛' },
@@ -17,14 +19,30 @@ const allergenOptions: { value: Allergen; label: string; emoji: string }[] = [
 export function SettingsTab() {
   const excludedAllergens = useAppStore((s) => s.excludedAllergens)
   const toggleAllergen = useAppStore((s) => s.toggleAllergen)
+  const activeProfile = useProfileStore((s) => s.activeProfile)
+  const profile = getProfile(activeProfile)
 
   return (
     <div className="max-w-4xl mx-auto px-6 pb-10">
       <div className="py-8">
         <h2 className="font-display text-3xl md:text-4xl mb-1">Ajustes</h2>
         <p className="text-text-dim text-sm md:text-base">
-          Configura tus preferencias alimentarias
+          Configuración de <span className="text-accent-green font-semibold">{profile.name}</span>
         </p>
+      </div>
+
+      {/* Profile Selector */}
+      <div className="bg-surface-1 border border-border-custom rounded-2xl px-6 py-6 mb-5">
+        <div className="flex items-center gap-3 mb-5">
+          <User size={22} className="text-accent-green" />
+          <div>
+            <h3 className="text-lg font-semibold">Perfil activo</h3>
+            <p className="text-sm text-text-muted">
+              Cada perfil tiene su propio progreso, recetas y ajustes
+            </p>
+          </div>
+        </div>
+        <ProfileSelector />
       </div>
 
       {/* Allergen Filters */}

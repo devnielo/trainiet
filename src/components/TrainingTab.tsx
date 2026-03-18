@@ -1,6 +1,7 @@
 import { useAppStore } from '@/store/useAppStore'
-import { phases } from '@/data/phases'
-import { programDays } from '@/data/exercises'
+import { useProfileStore } from '@/store/useProfileStore'
+import { phases, evaPhases } from '@/data/phases'
+import { programDays, evaProgramDays } from '@/data/exercises'
 import { ExerciseCard } from './ExerciseCard'
 import { PhaseSelector } from './PhaseSelector'
 import { Progress } from '@/components/ui/progress'
@@ -18,8 +19,13 @@ export function TrainingTab() {
   const checkedExercises = useAppStore((s) => s.checkedExercises)
   const clearChecks = useAppStore((s) => s.clearChecks)
 
-  const phase = phases.find((p) => p.id === currentPhase) ?? phases[5]
-  const days = programDays[currentPhase] ?? []
+  const activeProfile = useProfileStore((s) => s.activeProfile)
+  const isEva = activeProfile === 'eva'
+  const phaseList = isEva ? evaPhases : phases
+  const daysList = isEva ? evaProgramDays : programDays
+
+  const phase = phaseList.find((p) => p.id === currentPhase) ?? phaseList[phaseList.length - 1]
+  const days = daysList[currentPhase] ?? []
   const day = days[currentDay]
 
   const totalDays = days.length

@@ -1,5 +1,6 @@
 import { useAppStore } from '@/store/useAppStore'
-import { phases } from '@/data/phases'
+import { useProfileStore } from '@/store/useProfileStore'
+import { phases, evaPhases } from '@/data/phases'
 import { useState } from 'react'
 import { ChevronDown, Zap } from 'lucide-react'
 import { motion, AnimatePresence } from 'motion/react'
@@ -10,7 +11,10 @@ export function PhaseSelector() {
   const setCurrentDay = useAppStore((s) => s.setCurrentDay)
   const [open, setOpen] = useState(false)
 
-  const phase = phases.find((p) => p.id === currentPhase) ?? phases[5]
+  const activeProfile = useProfileStore((s) => s.activeProfile)
+  const phaseList = activeProfile === 'eva' ? evaPhases : phases
+
+  const phase = phaseList.find((p) => p.id === currentPhase) ?? phaseList[phaseList.length - 1]
 
   return (
     <div className="mb-4">
@@ -47,7 +51,7 @@ export function PhaseSelector() {
             className="overflow-hidden"
           >
             <div className="mt-2 space-y-2">
-              {phases.map((p) => (
+              {phaseList.map((p) => (
                 <button
                   key={p.id}
                   onClick={() => {
@@ -83,7 +87,7 @@ export function PhaseSelector() {
             {/* Timeline visual */}
             <div className="mt-4 px-1">
               <div className="flex gap-1">
-                {phases.map((p) => {
+                {phaseList.map((p) => {
                   const active = p.id === currentPhase
                   const weekSpan = p.weeks[1] - p.weeks[0] + 1
                   return (
