@@ -1,106 +1,94 @@
-// Exercise images - using verified Unsplash URLs
-const ex = (query: string) =>
-  `https://images.unsplash.com/photo-${query}?w=400&h=400&fit=crop&auto=format&q=80`
-
 export const exerciseImages: Record<string, string> = {
-  bench_press: ex('1534368786749-b63e05c92ea0'), // bench press in gym
-  incline_db_press: ex('1597452485669-2c7bb5fef90d'), // incline dumbbell press
-  incline_db_fly: ex('1571019614242-c5c5dee9f50b'), // cable fly
-  military_press: ex('1532029837206-abbe2b7620e0'), // overhead press
-  overhead_tri: ex('1530822847156-5df684ec5ee1'), // triceps extension
-  lateral_raise: ex('1581009146145-b5ef050c2e1e'), // lateral raises
-  pullup: ex('1598971639058-fab3c3109a00'), // pull ups
-  barbell_row: ex('1603287681836-b174ce5074c2'), // barbell row
-  chest_row: ex('1534438327276-14e5300c3a48'), // cable row
-  incline_curl: ex('1581009146145-b5ef050c2e1e'), // bicep curl
-  preacher_curl: ex('1581009146145-b5ef050c2e1e'), // preacher curl
-  face_pull: ex('1534368786749-b63e05c92ea0'), // cable face pull
-  squat: ex('1566241142559-40e1dab266c6'), // barbell squat
-  leg_press: ex('1534438327276-14e5300c3a48'), // leg press machine
-  leg_extension: ex('1534438327276-14e5300c3a48'), // leg extension
-  seated_leg_curl: ex('1534438327276-14e5300c3a48'), // leg curl machine
-  standing_calf: ex('1571019614242-c5c5dee9f50b'), // calf raise
-  hip_thrust: ex('1571019614242-c5c5dee9f50b'), // hip thrust
-  pec_deck: ex('1571019614242-c5c5dee9f50b'), // chest fly
-  seated_db_press: ex('1532029837206-abbe2b7620e0'), // seated overhead press
-  overhead_tri_db: ex('1530822847156-5df684ec5ee1'), // overhead triceps dumbbell
-  dips: ex('1598971639058-fab3c3109a00'), // chest dips
-  cable_lateral: ex('1581009146145-b5ef050c2e1e'), // cable lateral raise
-  close_pulldown: ex('1534438327276-14e5300c3a48'), // lat pulldown
-  one_arm_row: ex('1603287681836-b174ce5074c2'), // one arm dumbbell row
-  pullover: ex('1534438327276-14e5300c3a48'), // dumbbell pullover
-  spider_curl: ex('1581009146145-b5ef050c2e1e'), // spider curl
-  shrug: ex('1581009146145-b5ef050c2e1e'), // shrug
-  rdl: ex('1517963879433-6ad2b056d712'), // romanian deadlift
-  bulgarian: ex('1566241142559-40e1dab266c6'), // bulgarian split squat
-  seated_calf: ex('1534438327276-14e5300c3a48'), // seated calf raise
-  goblet_squat: ex('1566241142559-40e1dab266c6'), // goblet squat
-  plank: ex('1566241142559-40e1dab266c6'), // plank
-  hip_abduction: ex('1534438327276-14e5300c3a48'), // hip abduction machine
-  glute_bridge: ex('1571019614242-c5c5dee9f50b'), // glute bridge
-  step_up: ex('1534438327276-14e5300c3a48'), // step ups
-  walking_lunge: ex('1566241142559-40e1dab266c6'), // lunges
-  cable_kickback: ex('1534438327276-14e5300c3a48'), // cable kickback
-  flat_db_press: ex('1581009146145-b5ef050c2e1e'), // flat dumbbell press
-  flat_db_fly: ex('1571019614242-c5c5dee9f50b'), // dumbbell fly
-  db_pullover: ex('1534438327276-14e5300c3a48'), // dumbbell pullover
-  single_leg_hip: ex('1571019614242-c5c5dee9f50b'), // single leg hip thrust
-  sumo_deadlift: ex('1517963879433-6ad2b056d712'), // sumo deadlift
-  high_leg_press: ex('1534438327276-14e5300c3a48'), // high foot leg press
-  incline_abduction: ex('1534438327276-14e5300c3a48'), // incline abduction
-  triceps_pushdown: ex('1530822847156-5df684ec5ee1'), // triceps pushdown
+  bench_press: '/images/exercises/bench_press.jpg',
+  incline_db_press: '/images/exercises/incline_db_press.jpg',
+  incline_db_fly: '/images/exercises/incline_db_fly.jpg',
+  military_press: '/images/exercises/military_press.jpg',
+  overhead_tri: '/images/exercises/overhead_tri.jpg',
+  overhead_tri_db: '/images/exercises/overhead_tri_db.jpg',
+  lateral_raise: '/images/exercises/lateral_raise.jpg',
+  barbell_row: '/images/exercises/barbell_row.jpg',
+  one_arm_row: '/images/exercises/one_arm_row.jpg',
+  close_pulldown: '/images/exercises/close_pulldown.jpg',
+  cable_row_stretch: '/images/exercises/cable_row_stretch.jpg',
+  incline_curl: '/images/exercises/incline_curl.jpg',
+  face_pull: '/images/exercises/face_pull.jpg',
+  leg_press: '/images/exercises/leg_press.jpg',
+  hack_squat: '/images/exercises/hack_squat.jpg',
+  leg_extension: '/images/exercises/leg_extension.jpg',
+  seated_leg_curl: '/images/exercises/seated_leg_curl.jpg',
+  rdl: '/images/exercises/rdl.jpg',
+  standing_calf: '/images/exercises/standing_calf.jpg',
+  pec_deck: '/images/exercises/pec_deck.jpg',
+  seated_db_press: '/images/exercises/seated_db_press.jpg',
+  dips: '/images/exercises/dips.jpg',
+  cable_lateral: '/images/exercises/cable_lateral.jpg',
+  ez_curl: '/images/exercises/ez_curl.jpg',
+  hammer_curl: '/images/exercises/hammer_curl.jpg',
+  rear_delt_fly: '/images/exercises/rear_delt_fly.jpg',
+  front_squat: '/images/exercises/front_squat.jpg',
+  walking_lunge: '/images/exercises/walking_lunge.jpg',
+  sissy_squat: '/images/exercises/sissy_squat.jpg',
+  lying_leg_curl: '/images/exercises/lying_leg_curl.jpg',
+  hip_thrust: '/images/exercises/hip_thrust.jpg',
+  goblet_squat: '/images/exercises/goblet_squat.jpg',
+  plank: '/images/exercises/plank.jpg',
+  hip_abduction: '/images/exercises/hip_abduction.jpg',
+  glute_bridge: '/images/exercises/glute_bridge.jpg',
+  step_up: '/images/exercises/step_up.jpg',
+  cable_kickback: '/images/exercises/cable_kickback.jpg',
+  flat_db_press: '/images/exercises/flat_db_press.jpg',
+  flat_db_fly: '/images/exercises/flat_db_fly.jpg',
+  db_pullover: '/images/exercises/db_pullover.jpg',
+  single_leg_hip: '/images/exercises/single_leg_hip.jpg',
+  sumo_deadlift: '/images/exercises/sumo_deadlift.jpg',
+  high_leg_press: '/images/exercises/high_leg_press.jpg',
+  incline_abduction: '/images/exercises/incline_abduction.jpg',
+  triceps_pushdown: '/images/exercises/triceps_pushdown.jpg',
 }
 
-// Food images - using verified Unsplash URLs
-const fd = (query: string) =>
-  `https://images.unsplash.com/photo-${query}?w=400&h=400&fit=crop&auto=format&q=80`
-
 export const foodImages: Record<string, string> = {
-  pancakes: fd('1567620905732-2d1ec7ab7445'), // pancakes
-  avocado_toast: fd('1541519227354-08fa5d50c44d'), // avocado toast
-  porridge: fd('1495214783159-3503fd1b572d'), // oatmeal bowl
-  yogurt_granola: fd('1488477181946-6428a0291777'), // yogurt granola
-  protein_shake: fd('1553787499-6f9133860278'), // smoothie
-  scrambled_eggs: fd('1510693206972-df098062cb71'), // eggs
-  chia_pudding: fd('1502741338009-cac2772e18bc'), // chia pudding
-  chicken_wrap: fd('1626700051175-6818013e1d4f'), // wrap
-  cottage_toast: fd('1541519227354-08fa5d50c44d'), // toast
-  chicken_quinoa: fd('1532550907401-a500c9a57435'), // chicken bowl
-  salmon_bowl: fd('1467003909585-2f8a72700288'), // salmon bowl
-  lentils: fd('1505253716362-afaea1d3d1af'), // lentils
-  chicken_rice: fd('1512058564366-18510be2db19'), // rice plate
-  pasta_tuna: fd('1551183053-bf91a1d81141'), // pasta
-  chickpeas: fd('1505253716362-afaea1d3d1af'), // legumes
-  salmon_baked: fd('1467003909585-2f8a72700288'), // salmon
-  poke_bowl: fd('1546069901-ba9599a7e63c'), // poke bowl
-  beef_stir: fd('1504674900247-0877df9cc836'), // beef stir fry
-  omelette: fd('1510693206972-df098062cb71'), // eggs
-  pasta_salad: fd('1551183053-bf91a1d81141'), // pasta salad
-  turkey_sandwich: fd('1528735602780-2552fd46c7af'), // sandwich
-  curry: fd('1455619452474-d2be8b1e70cd'), // curry
-  fish_steam: fd('1467003909585-2f8a72700288'), // fish
-  tuna_salad: fd('1512621776951-a57141f2eefd'), // salad
-  turkey_salad: fd('1512621776951-a57141f2eefd'), // salad
-  pumpkin_soup: fd('1547592166897-f04e44e1b37a'), // soup
-  seabass: fd('1467003909585-2f8a72700288'), // fish
-  dorada: fd('1467003909585-2f8a72700288'), // fish
-  escalivada: fd('1540420773420-3366772f4999'), // roasted vegetables
-  gazpacho: fd('1464226184884-fa280b87c399'), // gazpacho
-  ramen: fd('1569718212165-3a8278d5f624'), // ramen
-  green_smooth: fd('1553787499-6f9133860278'), // green smoothie
-  salmon_toast: fd('1467003909585-2f8a72700288'), // salmon toast
-  nuts_choco: fd('1478145046317-39f10e56b5e9'), // nuts snack
-  hummus: fd('1505253716362-afaea1d3d1af'), // hummus
-  edamame: fd('1505253716362-afaea1d3d1af'), // edamame
-  cottage_fruit: fd('1488477181946-6428a0291777'), // cottage cheese with fruit
-  kale_chips: fd('1540420773420-3366772f4999'), // kale chips
-  jamon_roll: fd('1504674900247-0877df9cc836'), // meat roll
-  tofu_stir: fd('1512058564366-18510be2db19'), // tofu stir fry
-  hummus_toast: fd('1541519227354-08fa5d50c44d'), // hummus on toast
-  babaganoush: fd('1505253716362-afaea1d3d1af'), // baba ganoush dip
-  boniato_chips: fd('1540420773420-3366772f4999'), // sweet potato chips
-  falafel: fd('1505253716362-afaea1d3d1af'), // falafel plate
-  gambas_ajillo: fd('1467003909585-2f8a72700288'), // garlic shrimp
-  mejillones: fd('1467003909585-2f8a72700288'), // mussels
-  pork_loin: fd('1504674900247-0877df9cc836'), // pork tenderloin
+  pancakes: '/images/food/pancakes.jpg',
+  avocado_toast: '/images/food/avocado_toast.jpg',
+  porridge: '/images/food/porridge.jpg',
+  yogurt_granola: '/images/food/yogurt_granola.jpg',
+  protein_shake: '/images/food/protein_shake.jpg',
+  scrambled_eggs: '/images/food/scrambled_eggs.jpg',
+  chia_pudding: '/images/food/chia_pudding.jpg',
+  chicken_wrap: '/images/food/chicken_wrap.jpg',
+  cottage_toast: '/images/food/cottage_toast.jpg',
+  chicken_quinoa: '/images/food/chicken_quinoa.jpg',
+  salmon_bowl: '/images/food/salmon_bowl.jpg',
+  lentils: '/images/food/lentils.jpg',
+  chicken_rice: '/images/food/chicken_rice.jpg',
+  tuna_salad: '/images/food/tuna_salad.jpg',
+  beef_sweet_potato: '/images/food/beef_sweet_potato.jpg',
+  pasta_tuna: '/images/food/pasta_tuna.jpg',
+  chickpeas: '/images/food/chickpeas.jpg',
+  veggie_stir_fry: '/images/food/veggie_stir_fry.jpg',
+  fish_veggies: '/images/food/fish_veggies.jpg',
+  turkey_salad: '/images/food/turkey_salad.jpg',
+  omelette: '/images/food/omelette.jpg',
+  steak_salad: '/images/food/steak_salad.jpg',
+  pumpkin_soup: '/images/food/pumpkin_soup.jpg',
+  gazpacho: '/images/food/gazpacho.jpg',
+  escalivada: '/images/food/escalivada.jpg',
+  greek_salad: '/images/food/greek_salad.jpg',
+  shrimp_rice: '/images/food/shrimp_rice.jpg',
+  pasta_salad: '/images/food/pasta_salad.jpg',
+  kale_chips: '/images/food/kale_chips.jpg',
+  hummus: '/images/food/hummus.jpg',
+  nuts_choco: '/images/food/nuts_choco.jpg',
+  energy_balls: '/images/food/energy_balls.jpg',
+  rice_cakes: '/images/food/rice_cakes.jpg',
+  banana_pb: '/images/food/banana_pb.jpg',
+  post_shake: '/images/food/post_shake.jpg',
+  rice_chicken_banana: '/images/food/rice_chicken_banana.jpg',
+  salmon_toast: '/images/food/salmon_toast.jpg',
+  hummus_toast: '/images/food/hummus_toast.jpg',
+  babaganoush: '/images/food/babaganoush.jpg',
+  boniato_chips: '/images/food/boniato_chips.jpg',
+  falafel: '/images/food/falafel.jpg',
+  gambas_ajillo: '/images/food/gambas_ajillo.jpg',
+  mejillones: '/images/food/mejillones.jpg',
+  pork_loin: '/images/food/pork_loin.jpg',
 }
