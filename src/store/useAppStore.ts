@@ -1,11 +1,11 @@
-import { create } from 'zustand'
+import { create, useStore } from 'zustand'
 import { persist } from 'zustand/middleware'
 import type { Allergen, Recipe } from '@/data/types'
 import { useProfileStore, getStorageKey, type ProfileId } from './useProfileStore'
 
 type CheckedExercises = Record<string, boolean>
 
-type AppState = {
+export type AppState = {
   // Navigation
   activeTab: number
   setActiveTab: (tab: number) => void
@@ -42,6 +42,8 @@ type AppState = {
   setSearchQuery: (v: string) => void
 }
 
+type AppStore = ReturnType<typeof createAppStore>
+
 function createAppStore(profileId: ProfileId) {
   return create<AppState>()(
     persist(
@@ -51,8 +53,8 @@ function createAppStore(profileId: ProfileId) {
         setActiveTab: (tab) => set({ activeTab: tab }),
 
         // Training
-        currentPhase: 'phase_1',
-        setCurrentPhase: (phase) => set({ currentPhase: phase }),
+        currentPhase: profileId === 'eva' ? 'eva_phase_1' : 'phase_1',
+        setCurrentPhase: (phase) => set({ currentPhase: phase, currentDay: 0 }),
         currentDay: 0,
         setCurrentDay: (day) => set({ currentDay: day }),
         checkedExercises: {},
@@ -112,27 +114,26 @@ function createAppStore(profileId: ProfileId) {
   )
 }
 
-// Cache stores per profile to avoid re-creating on every render
-const storeCache = new Map<ProfileId, ReturnType<typeof createAppStore>>()
+// Cache stores per profile
+const storeCache = new Map<ProfileId, AppStore>()
 
-function getOrCreateStore(profileId: ProfileId) {
+function getOrCreateStore(profileId: ProfileId): AppStore {
   if (!storeCache.has(profileId)) {
     storeCache.set(profileId, createAppStore(profileId))
   }
   return storeCache.get(profileId)!
 }
 
-// Hook: always returns the store for the active profile
+// Hook using useStore for proper React subscription
 export function useAppStore(): AppState
 export function useAppStore<T>(selector: (state: AppState) => T): T
 export function useAppStore<T>(selector?: (state: AppState) => T) {
   const profileId = useProfileStore((s) => s.activeProfile)
   const store = getOrCreateStore(profileId)
-  if (selector) return store(selector)
-  return store()
+  return useStore(store, selector ?? ((s) => s as unknown as T))
 }
 
-// For imperative access outside React (if needed)
+// For imperative access outside React
 export function getAppStore(profileId?: ProfileId) {
   const id = profileId ?? useProfileStore.getState().activeProfile
   return getOrCreateStore(id)

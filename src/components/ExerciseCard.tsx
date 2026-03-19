@@ -61,7 +61,7 @@ export function ExerciseCard({ exercise, index, category }: Props) {
           )}
 
           {/* Bottom gradient */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
 
           {/* Number badge */}
           <div className={`absolute top-2.5 left-2.5 w-7 h-7 rounded-full bg-black/60 backdrop-blur-sm flex items-center justify-center text-xs font-mono font-bold ${accent}`}>
