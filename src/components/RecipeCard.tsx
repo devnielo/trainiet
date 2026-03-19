@@ -28,15 +28,15 @@ export function RecipeCard({ recipe, isSelected, onToggle, size = 'normal' }: Pr
   const gradientFallback = placeholderGradients[recipe.id % placeholderGradients.length]
 
   const sizeClasses = {
-    normal: 'w-[160px] md:w-[180px] lg:w-[200px]',
-    large: 'w-[200px] md:w-[220px] lg:w-[240px]',
-    featured: 'w-[280px] md:w-[320px] lg:w-[360px]',
+    normal: 'w-[170px] md:w-[190px] lg:w-[210px]',
+    large: 'w-[210px] md:w-[230px] lg:w-[250px]',
+    featured: 'w-[300px] md:w-[340px] lg:w-[380px]',
   }
 
   const heightClasses = {
-    normal: 'aspect-[3/4]',
-    large: 'aspect-[3/4]',
-    featured: 'aspect-[16/10]',
+    normal: 'aspect-[4/5]',
+    large: 'aspect-[4/5]',
+    featured: 'aspect-[4/5]',
   }
 
   return (
@@ -60,7 +60,7 @@ export function RecipeCard({ recipe, isSelected, onToggle, size = 'normal' }: Pr
               alt={recipe.name}
               loading="lazy"
               onError={() => setImgError(true)}
-              className="absolute inset-0 w-full h-full object-cover"
+              className="absolute inset-0 w-full h-full object-cover object-center"
             />
           ) : (
             <div className={`absolute inset-0 bg-gradient-to-br ${gradientFallback}`}>

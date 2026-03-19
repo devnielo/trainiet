@@ -359,7 +359,7 @@ export function NutritionTab() {
       {/* MAIN CONTENT                                */}
       {/* ═══════════════════════════════════════════ */}
       <main className="flex-1 lg:overflow-y-auto">
-        <div className="max-w-4xl mx-auto px-4 md:px-6 lg:px-8 xl:px-10 pb-8">
+        <div className="px-4 md:px-6 lg:px-8 xl:px-10 pb-8">
 
           {/* Header */}
           <div className="py-8 lg:py-6">

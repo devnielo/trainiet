@@ -169,7 +169,7 @@ export function TrainingTab() {
       {/* MAIN CONTENT                                */}
       {/* ═══════════════════════════════════════════ */}
       <main className="flex-1 lg:overflow-y-auto">
-        <div className="max-w-4xl mx-auto px-4 md:px-6 lg:px-8 xl:px-10 pb-28 lg:pb-10">
+        <div className="px-4 md:px-6 lg:px-8 xl:px-10 pb-28 lg:pb-10">
 
           {/* Header — shown on mobile, condensed on desktop */}
           <div className="text-center py-8 md:py-10 lg:py-6">
@@ -322,8 +322,8 @@ export function TrainingTab() {
                   </span>
                 </div>
 
-                {/* Exercises */}
-                <div className="space-y-3">
+                {/* Exercises — grid layout */}
+                <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-3 lg:gap-4">
                   {day.exercises.map((exercise, i) => (
                     <ExerciseCard
                       key={exercise.id}
