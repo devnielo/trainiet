@@ -1,4 +1,4 @@
-const CACHE_NAME = 'trainiet-v2';
+const CACHE_NAME = 'trainiet-v3';
 const STATIC_ASSETS = [
   '/',
   '/index.html',
@@ -24,10 +24,14 @@ self.addEventListener('activate', (event) => {
 self.addEventListener('fetch', (event) => {
   if (event.request.method !== 'GET') return;
 
+  // Only cache same-origin requests (local assets), not external URLs
+  const url = new URL(event.request.url);
+  if (url.origin !== self.location.origin) return;
+
   event.respondWith(
     caches.match(event.request).then((cached) => {
       const fetched = fetch(event.request).then((response) => {
-        if (response && response.status === 200) {
+        if (response && response.status === 200 && response.type === 'basic') {
           const clone = response.clone();
           caches.open(CACHE_NAME).then((cache) => cache.put(event.request, clone));
         }
