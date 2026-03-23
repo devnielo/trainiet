@@ -40,14 +40,23 @@ export function TrainingTab() {
 
   const allCompleted = dayExercises.length > 0 && checked === dayExercises.length
   const [showCompletion, setShowCompletion] = useState(false)
-  const [prevCompleted, setPrevCompleted] = useState(false)
+  const [prevChecked, setPrevChecked] = useState(checked)
+  const [trackedDay, setTrackedDay] = useState(currentDay)
 
   useEffect(() => {
-    if (allCompleted && !prevCompleted) {
+    // Reset tracking when day changes — never show popup on day switch
+    if (currentDay !== trackedDay) {
+      setTrackedDay(currentDay)
+      setPrevChecked(checked)
+      setShowCompletion(false)
+      return
+    }
+    // Only show popup when user just checked the LAST exercise (checked went from N-1 to N)
+    if (allCompleted && checked > prevChecked && prevChecked < dayExercises.length) {
       setShowCompletion(true)
     }
-    setPrevCompleted(allCompleted)
-  }, [allCompleted, prevCompleted])
+    setPrevChecked(checked)
+  }, [checked, currentDay, trackedDay, allCompleted, prevChecked, dayExercises.length])
 
   const categoryColors: Record<string, string> = {
     push: 'text-push bg-push-bg border-push-border',
@@ -338,18 +347,18 @@ export function TrainingTab() {
           )}
         </div>
 
-        {/* Bottom Bar — mobile only */}
-        <div className="lg:hidden fixed bottom-0 left-0 right-0 bg-bg/95 backdrop-blur-xl border-t border-border-custom px-4 md:px-6 py-3 pb-[calc(12px+env(safe-area-inset-bottom))] z-50">
-          <div className="max-w-4xl mx-auto flex gap-3 justify-center">
+        {/* Action buttons — inline at end of exercises */}
+        {day && (
+          <div className="flex gap-3 justify-center mt-6 mb-4 lg:mb-8 px-2">
             <button
               onClick={prevDay}
-              className="flex-1 max-w-[200px] font-mono text-sm min-h-[48px] px-5 rounded-xl border border-border-custom bg-surface-2 text-text-dim active:scale-95 hover:bg-surface-3 transition-all cursor-pointer"
+              className="flex-1 max-w-[160px] lg:max-w-[200px] font-mono text-sm min-h-[48px] px-4 rounded-xl border border-border-custom bg-surface-2 text-text-dim active:scale-95 hover:bg-surface-3 transition-all cursor-pointer"
             >
               ◂ Anterior
             </button>
             <button
               onClick={nextDay}
-              className="flex-1 max-w-[200px] font-mono text-sm min-h-[48px] px-5 rounded-xl bg-accent-green text-bg font-semibold border border-accent-green active:scale-95 hover:bg-accent-green-dark transition-all cursor-pointer"
+              className="flex-1 max-w-[160px] lg:max-w-[200px] font-mono text-sm min-h-[48px] px-4 rounded-xl bg-accent-green text-bg font-semibold border border-accent-green active:scale-95 hover:bg-accent-green-dark transition-all cursor-pointer"
             >
               Siguiente ▸
             </button>
@@ -357,12 +366,12 @@ export function TrainingTab() {
               onClick={() => {
                 if (confirm('Limpiar checks para nueva semana?')) clearChecks()
               }}
-              className="flex-1 max-w-[200px] font-mono text-sm min-h-[48px] px-5 rounded-xl border border-push-border bg-transparent text-push active:scale-95 hover:bg-push-bg transition-all cursor-pointer flex items-center justify-center gap-2"
+              className="flex-1 max-w-[160px] lg:max-w-[200px] font-mono text-sm min-h-[48px] px-4 rounded-xl border border-push-border bg-transparent text-push active:scale-95 hover:bg-push-bg transition-all cursor-pointer flex items-center justify-center gap-2"
             >
               <RotateCcw size={16} /> Limpiar
             </button>
           </div>
-        </div>
+        )}
       </main>
 
       {/* Completion Overlay */}
