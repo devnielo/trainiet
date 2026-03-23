@@ -77,22 +77,22 @@ export function ExerciseCard({ exercise, index, category }: Props) {
             </div>
           )}
 
-          {/* Zoom hint */}
-          <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+          {/* Zoom hint — desktop only */}
+          <div className="absolute inset-0 flex items-center justify-center opacity-0 lg:group-hover:opacity-100 transition-opacity pointer-events-none">
             <Maximize2 size={20} className="text-white/70" />
           </div>
 
-          {/* Checkbox overlay — top right on hover or always if checked */}
-          <div className={`absolute bottom-2.5 right-2.5 ${isChecked ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'} transition-opacity`}>
+          {/* Checkbox — always visible on mobile, hover on desktop */}
+          <div className={`absolute bottom-2.5 right-2.5 ${isChecked ? 'opacity-100' : 'opacity-100 lg:opacity-0 lg:group-hover:opacity-100'} transition-opacity`}>
             <button
               onClick={(e) => {
                 e.stopPropagation()
                 toggleExercise(exercise.id)
               }}
-              className={`w-8 h-8 rounded-full flex items-center justify-center transition-all cursor-pointer shadow-lg ${
+              className={`w-9 h-9 rounded-full flex items-center justify-center transition-all cursor-pointer shadow-lg active:scale-90 ${
                 isChecked
                   ? 'bg-accent-green text-bg'
-                  : 'bg-black/50 backdrop-blur-sm text-white hover:bg-accent-green hover:text-bg'
+                  : 'bg-black/60 backdrop-blur-sm text-white active:bg-accent-green active:text-bg lg:hover:bg-accent-green lg:hover:text-bg'
               }`}
               aria-label={isChecked ? `Desmarcar ${exercise.name}` : `Completar ${exercise.name}`}
             >

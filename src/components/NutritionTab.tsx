@@ -336,7 +336,7 @@ export function NutritionTab() {
                     </span>
                     <button
                       onClick={() => removeRecipe(r.id)}
-                      className="text-push p-1.5 cursor-pointer opacity-0 group-hover:opacity-100 hover:bg-push-bg rounded-md transition-all shrink-0"
+                      className="text-push p-1.5 cursor-pointer opacity-100 lg:opacity-0 lg:group-hover:opacity-100 lg:hover:bg-push-bg rounded-md transition-all shrink-0 active:scale-90"
                       aria-label={`Quitar ${r.name}`}
                     >
                       <X className="w-3.5 h-3.5" />

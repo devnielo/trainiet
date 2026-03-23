@@ -82,18 +82,18 @@ export function RecipeCard({ recipe, isSelected, onToggle, size = 'normal' }: Pr
             </div>
           )}
 
-          {/* Add button — visible on hover */}
+          {/* Add button — always visible on mobile, hover on desktop */}
           {!isSelected && (
-            <div className="absolute top-2.5 right-2.5 z-10 opacity-0 group-hover:opacity-100 transition-opacity">
+            <div className="absolute top-2.5 right-2.5 z-10 opacity-100 lg:opacity-0 lg:group-hover:opacity-100 transition-opacity">
               <button
                 onClick={(e) => {
                   e.stopPropagation()
                   onToggle()
                 }}
-                className="w-8 h-8 rounded-full bg-bg/80 backdrop-blur-sm border border-border-custom flex items-center justify-center hover:bg-accent-green hover:text-bg hover:border-accent-green transition-all cursor-pointer"
+                className="w-9 h-9 rounded-full bg-bg/70 backdrop-blur-sm border border-border-custom/50 flex items-center justify-center lg:hover:bg-accent-green lg:hover:text-bg lg:hover:border-accent-green transition-all cursor-pointer active:scale-90 active:bg-accent-green active:text-bg"
                 aria-label={`Añadir ${recipe.name}`}
               >
-                <Plus size={16} />
+                <Plus size={18} />
               </button>
             </div>
           )}
